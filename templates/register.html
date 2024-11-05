@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-6">Register</h2>
+
+        <form method="POST" class="space-y-4">
+            {{ form.hidden_tag() }}
+            
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">{{ form.name.label }}</label>
+                {{ form.name(class="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") }}
+            </div>
+
+            <div>
+                <label for="address" class="block text-sm font-medium text-gray-700">{{ form.address.label }}</label>
+                {{ form.address(class="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") }}
+            </div>
+
+            <div>
+                <label for="bvn" class="block text-sm font-medium text-gray-700">{{ form.bvn.label }}</label>
+                {{ form.bvn(class="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") }}
+            </div>
+
+            <div>
+                <label for="card_number" class="block text-sm font-medium text-gray-700">{{ form.card_number.label }}</label>
+                {{ form.card_number(class="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") }}
+            </div>
+
+            <div>
+                <label for="pin" class="block text-sm font-medium text-gray-700">{{ form.pin.label }}</label>
+                {{ form.pin(class="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") }}
+            </div>
+
+            <div>
+                {{ form.submit(class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer") }}
+            </div>
+        </form>
+        <p>aready have an account <a href="/login" class="text-blue-500 hover:underline">login</a></p>
+    </div>
+</div>
+{% endblock content %}

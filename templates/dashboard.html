@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Customer Dashboard</title>
+<script>
+    function toggleBankInfo() {
+        const bankInfo = document.getElementById('bankInfo');
+        const toggleBtn = document.getElementById('toggleBtn');
+        if (bankInfo.style.display === 'none') {
+            bankInfo.style.display = 'block';
+            toggleBtn.textContent = 'Hide Bank Information';
+        } else {
+            bankInfo.style.display = 'none';
+            toggleBtn.textContent = 'Show Bank Information';
+        }
+    }
+</script>
+{% endblock head %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-gray-800">Customer Dashboard</h1>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 sm:p-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-700">Welcome, {{ current_user.name }}</h2>
+            <div class="grid grid-cols-1 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-medium mb-4 text-gray-600">Personal Details</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="w-24 font-semibold text-gray-700">Name:</span> {{ current_user.name }}</li>
+                        <li class="flex items-center"><span class="w-24 font-semibold text-gray-700">Address:</span> {{ current_user.address }}</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-medium mb-4 text-gray-600">Bank Information</h3>
+                    <button id="toggleBtn" onclick="toggleBankInfo()" class="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Show Bank Information
+                    </button>
+                    <div id="bankInfo" style="display: none;">
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><span class="w-32 font-semibold text-gray-700">Account Type:</span> Savings</li>
+                            <li class="flex items-center"><span class="w-32 font-semibold text-gray-700">BVN:</span> {{ mask_string(user.bvn, 4) }}</li>
+                            <li class="flex items-center"><span class="w-32 font-semibold text-gray-700">Card Number:</span> {{ mask_string(user.card_number, 4) }}</li>
+                            <li class="flex items-center"><span class="w-32 font-semibold text-gray-700">Card Expiry:</span> {{ user.pin }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
